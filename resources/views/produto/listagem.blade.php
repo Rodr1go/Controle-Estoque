@@ -58,6 +58,9 @@
 				</div>
 			@endif
 
+			<!-- paginação -->
+			{!! $produtos->render() !!}
+			
    	  </div>
 </div>
 

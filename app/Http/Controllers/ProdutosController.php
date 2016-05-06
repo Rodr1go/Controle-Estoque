@@ -16,7 +16,7 @@ class ProdutosController extends Controller {
 		return view('produto.listagem')->with('produtos', $produtos);*/
 
         //Código com Eloquent ORM
-		$produtos = Produto::all();
+		$produtos = Produto::paginate(10);
 		return view('produto.listagem')->with('produtos', $produtos);
 	}
 
