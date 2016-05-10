@@ -7,9 +7,14 @@ use CRUD\Http\Requests\ProdutosRequest;//Classe de validação
 use Request;
 
 class ProdutosController extends Controller {
+	
+	public function __construct(){
+		$this->middleware('auth');
+
+	}
+
 	public function lista(){
 		
-
 		/* Código sem Eloquent ORM
 		$produtos = DB::select('select * from produtos'); 
 		

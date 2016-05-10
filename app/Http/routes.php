@@ -11,40 +11,26 @@
 |
 */
 
-Route::get('produtos', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@lista'
-]);
-
-Route::get('/produtos/detalhes/{id}', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@detalhes'])->where('id', '[0-9]+'
+Route::get('produtos', 'ProdutosController@lista'
 );
 
-Route::get('/produtos/novo', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@novo'
-]);
+Route::get('/produtos/detalhes/{id}', 'ProdutosController@detalhes')->where('id', '[0-9]+'
+);
 
-Route::post('/produtos/adiciona', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@adiciona'
-]);
+Route::get('/produtos/novo', 'ProdutosController@novo'
+);
 
-Route::get('/produtos/remove/{id}', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@remove'
-]);
+Route::post('/produtos/adiciona',  'ProdutosController@adiciona'
+);
 
-Route::get('/produtos/editar/{id}', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@editar'
-]);
+Route::get('/produtos/remove/{id}', 'ProdutosController@remove'
+);
 
-Route::post('/produtos/atualiza/{id}', [
-	'middleware' => 'auth',
-	'uses' => 'ProdutosController@atualiza'
-]);
+Route::get('/produtos/editar/{id}', 'ProdutosController@editar'
+);
+
+Route::post('/produtos/atualiza/{id}', 'ProdutosController@atualiza'
+);
 
 Route::get('/produtos/json', 'ProdutosController@listaJson');
 
