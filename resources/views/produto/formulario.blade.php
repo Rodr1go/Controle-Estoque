@@ -14,7 +14,7 @@
 			     </ul>
 		     </div>
 	     @endif
-	     <form action="/produtos/adiciona" method="post">
+	     <form action="{{route('produtos.adiciona')}}" method="post">
 	        <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
 	        <div class="form-group">

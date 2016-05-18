@@ -36,10 +36,11 @@ Route::group(['prefix'=>'produtos', 'where'=>['id'=>'[0-9]+']], function(){
 * Rotas de Clientes 
 */
 
-Route::get('/clientes/form', 'ClientesController@formCad');
-
-Route::get('/clientes', 'ClientesController@lista');
+Route::group(['prefix'=>'clientes'], function() {
+	Route::get('', ['as'=>'clientes', 'uses'=>'ClientesController@lista']);
+	
+	Route::get('form', ['as'=>'clientes', 'uses'=>'ClientesController@formCad']);
+});
 
 Route::auth();
-
 Route::get('/home', 'HomeController@index');

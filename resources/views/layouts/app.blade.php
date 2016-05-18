@@ -41,7 +41,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Sistema-CE
                 </a>
             </div>
 
@@ -50,8 +50,27 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
 
-                    <li><a href="{{action('ProdutosController@lista')}}">Listagem</a></li>
-                    <li><a href="{{action('ProdutosController@novo')}}">Novo</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Produtos <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ route('produtos') }}"><i class="fa fa-btn fa-list"></i>Listar</a></li>
+                            <li><a href="{{ route('produtos.formulario') }}"><i class="fa fa-btn fa-plus-circle"></i>Cadastrar</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            Clientes <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ route('produtos') }}"><i class="fa fa-btn fa-list"></i>Listar</a></li>
+                            <li><a href="{{ route('produtos.formulario') }}"><i class="fa fa-btn fa-plus-circle"></i>Cadastrar</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

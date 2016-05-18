@@ -3,7 +3,7 @@
     <div class="panel panel-default">
      <div class="panel-heading">Editar Produto: {{$p->nome}}</div>
       <div class="panel-body">  
-         <form action="/produtos/atualiza/{{$p->id}}" method="post">
+         <form action="{{ route('produtos.atualiza', ['id'=>$p->id]) }}" method="post">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
 
             <div class="form-group">

@@ -27,16 +27,16 @@
 					<td>{{ $p->descricao }}</td>
 					<td>{{ $p->quantidade }}</td>
 					<td>
-					  <a href="/produtos/detalhes/{{ $p->id }}">
+					  <a href="{{ route('produtos.detalhes', ['id'=>$p->id]) }}">
 					  	<span class="glyphicon glyphicon-search"></span>
 					   </a>
 			        </td>
 			        <td>    
-			           <a href="{{action('ProdutosController@remove', $p->id)}}"><span class="glyphicon glyphicon-trash"></span>
+			           <a href="{{ route('produtos.remove', ['id'=>$p->id]) }}"><span class="glyphicon glyphicon-trash"></span>
 					   </a>
 					</td>
 					<td>    
-			           <a href="{{action('ProdutosController@editar', $p->id)}}"><span class="glyphicon glyphicon-pencil"></span>
+			           <a href="{{ route('produtos.editar', ['id'=>$p->id]) }}"><span class="glyphicon glyphicon-pencil"></span>
 					   </a>
 					</td>		 	
 				</tr>
