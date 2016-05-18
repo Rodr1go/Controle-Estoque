@@ -11,30 +11,34 @@
 |
 */
 
-Route::get('produtos', 'ProdutosController@lista'
-);
+/*
+* Rotas de Produtos 
+*/
+Route::group(['prefix'=>'produtos', 'where'=>['id'=>'[0-9]+']], function(){
+   Route::get('', ['as'=>'produtos', 'uses'=>'ProdutosController@lista']);
 
-Route::get('/produtos/detalhes/{id}', 'ProdutosController@detalhes')->where('id', '[0-9]+'
-);
+   Route::get('detalhes/{id}', ['as'=>'produtos.detalhes', 'uses'=>'ProdutosController@detalhes']);
 
-Route::get('/produtos/novo', 'ProdutosController@novo'
-);
+   Route::get('novo', ['as'=>'produtos.formulario', 'uses'=>'ProdutosController@novo']);
 
-Route::post('/produtos/adiciona',  'ProdutosController@adiciona'
-);
+   Route::post('adiciona', ['as'=>'produtos.adiciona', 'uses'=>'ProdutosController@adiciona']);
 
-Route::get('/produtos/remove/{id}', 'ProdutosController@remove'
-);
+   Route::get('remove/{id}', ['as'=>'produtos.remove', 'uses'=>'ProdutosController@remove']);
 
-Route::get('/produtos/editar/{id}', 'ProdutosController@editar'
-);
+   Route::get('editar/{id}', ['as'=>'produtos.editar', 'uses'=>'ProdutosController@editar']);
 
-Route::post('/produtos/atualiza/{id}', 'ProdutosController@atualiza'
-);
+   Route::post('atualiza/{id}', ['as'=>'produtos.atualiza', 'uses'=>'ProdutosController@atualiza']);
 
-Route::get('/produtos/json', 'ProdutosController@listaJson');
+   Route::get('json', ['as'=>'produtos.json', 'uses'=>'ProdutosController@listaJson']);   
+});
 
+/*
+* Rotas de Clientes 
+*/
 
+Route::get('/clientes/form', 'ClientesController@formCad');
+
+Route::get('/clientes', 'ClientesController@lista');
 
 Route::auth();
 

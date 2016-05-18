@@ -2,7 +2,7 @@
 
 namespace CRUD\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use CRUD\Produto; //Importando o módel
+use CRUD\Produto; //Importando o model
 use CRUD\Http\Requests\ProdutosRequest;//Classe de validação
 use Request;
 
@@ -22,7 +22,7 @@ class ProdutosController extends Controller {
 
         //Código com Eloquent ORM
 		$produtos = Produto::paginate(10);
-		return view('produto.listagem')->with('produtos', $produtos);
+		return view('produto.listagem', ['produtos'=>$produtos]);
 	}
 
 	public function detalhes($id){
@@ -33,7 +33,7 @@ class ProdutosController extends Controller {
 		if(empty($produto)){
 			return "Este produto não existe!";
 		}
-		return view('produto.detalhes')->with('p', $produto);
+		return view('produto.detalhes', ['p'=>$produto]);
 	}
 
 	public function novo(){
@@ -44,7 +44,7 @@ class ProdutosController extends Controller {
 		
         Produto::create($req->all());
   
-        return redirect()->action('ProdutosController@lista')->withInput(Request::only('nome'));
+        return redirect()->route('produtos')->withInput(Request::only('nome'));
 
         //Código sem ORM
         /*$nome = Request::input('nome');
@@ -60,17 +60,17 @@ class ProdutosController extends Controller {
     	$produto = Produto::find($id);
     	$produto->delete();
 
-    	return redirect()->action('ProdutosController@lista');
+    	return redirect()->route('produtos');
     }
 
     public function editar($id){
     	$produto = Produto::find($id);
-		return view('produto.form_atualiza')->with('p', $produto);
+		return view('produto.form_atualiza', ['p'=>$produto]);
 	}
 
     public function atualiza($id){
     	$produto = Produto::find($id)->update(Request::all()); 
-    	return redirect()->action('ProdutosController@lista');
+    	return redirect()->route('produtos');
     }
 
 	public function listaJson(){
